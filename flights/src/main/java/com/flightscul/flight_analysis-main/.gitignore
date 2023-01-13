@@ -1,0 +1,12 @@
+nb/
+__pycache__/
+# Jupyter Notebook
+.ipynb_checkpoints
+
+cached/
+.Rproj.user
+.RData
+.RHistory
+*.Rproj
+
+flight_analysis_app/
