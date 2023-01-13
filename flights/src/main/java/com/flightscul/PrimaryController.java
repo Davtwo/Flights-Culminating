@@ -2,6 +2,13 @@ package com.flightscul;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 public class PrimaryController {
 
@@ -30,6 +37,6 @@ public class PrimaryController {
       stage.setScene(scene);
       stage.show();
    }
- 
+
 
 }
