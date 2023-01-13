@@ -16,8 +16,11 @@ public class App extends Application {
     private static Scene scene;
 
     @Override
+ /*
+  *Primary screen is started allowing the user to access the data and interact with the screen
+ */
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 1920, 1080);
+        scene = new Scene(loadFXML("primary"), 640, 480);
         stage.setScene(scene);
         stage.show();
     }
