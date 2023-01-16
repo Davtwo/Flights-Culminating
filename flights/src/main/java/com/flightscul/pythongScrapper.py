@@ -12,8 +12,6 @@ from subprocess import Popen, PIPE
 import pickle
 import argparse
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
 
 options = webdriver.ChromeOptions()
 
