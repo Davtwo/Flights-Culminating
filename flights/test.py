@@ -137,3 +137,104 @@ if __name__ == "__main__":
     expedia.search(outcity,incity,out_date,in_date)
 
 # s.quit()
+
+"""
+
+import math
+import csv
+import random
+from datetime import datetime
+
+def distance(lat1, lon1, lat2, lon2):
+    """
+    This function calculates the distance between two points using the Haversine formula to help with the scrapping
+    """
+    # Convert to radians
+    lat1 = math.radians(lat1)
+    lon1 = math.radians(lon1)
+    lat2 = math.radians(lat2)
+    lon2 = math.radians(lon2)
+
+    # Haversine formula
+    dlon = lon2 - lon1
+    dlat = lat2 - lat1
+    a = (math.sin(dlat/2)**2) + math.cos(lat1) * math.cos(lat2) * (math.sin(dlon/2)**2)
+    c = 2 * math.asin(math.sqrt(a))
+
+    # Radius of earth in kilometers. Use 3959 for miles
+    r = 6371
+    return c * r
+
+def ticket_price(distance, low, high, class_multiplier):
+    """
+    calculates the ticket price based on the distance, low and high prices.
+    """
+    return int((distance*random.uniform(0.01, 0.05))*class_multiplier + random.uniform(low, high))
+
+
+def get_days_in_month(month):
+    """
+    returns the number of days in a month for the days to be valid.
+    """
+    return 31 if month in [1,3,5,7,8,10,12] else 30
+
+def write_csv(prices, filename):
+    """
+    writes the prices to a CSV file
+    """
+    with open(filename, mode='w') as csv_file:
+        fieldnames = ['day', 'economy', 'business', 'first']
+        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+        writer.writeheader()
+        for day, price in prices.items():
+            writer.writerow({'day': day, 'economy': price["economy"], 'business': price["business"], 'first': price["first"]})
+
+def cheapest_days(distance, month, days):
+    """
+    determines the cheapest days to travel in a given month and for a given duration.
+    """
+    prices = {}
+    days_in_month = get_days_in_month(month)
+
+    # Calculate prices for each day
+    for i in range(1, days_in_month + 1):
+        if i % 7 == 0 or i % 7 == 6 :
+            prices[i] = {"economy": ticket_price(distance, 200, 300, 1), "business": ticket_price(distance, 400, 600, 5), "first": ticket_price(distance, 700, 1100, 7)}
+        else:
+            prices[i] = {"economy": ticket_price(distance, 300, 600, 1), "business": ticket_price(distance, 500, 700, 5), "first": ticket_price(distance, 800, 1000, 8)}
+
+            
+    # write prices to csv
+    write_csv(prices, "prices.csv")
+
+    min_price = float('inf')
+    for day, price in prices.items():
+        return_day = (day + days - 1) % days_in_month + 1
+        economy_price = prices[day]["economy"] + prices[return_day]["economy"]
+        business_price = prices[day]["business"] + prices[return_day]["business"]
+        first_price = prices[day]["first"] + prices[return_day]["first"]
+        if economy_price < min_price:
+            min_price = economy_price
+            cheapest_class = "economy"
+            cheapest_departure_day, cheapest_return_day = day, return_day
+        if business_price < min_price:
+            min_price = business_price
+            cheapest_class = "business"
+            cheapest_departure_day, cheapest_return_day = day, return_day
+        if first_price < min_price:
+            min_price = first_price
+            cheapest_class = "first"
+            cheapest_departure_day, cheapest_return_day = day, return_day
+    return cheapest_departure_day, cheapest_return_day, prices, cheapest_class
+
+distance = int(input("What is the distance in kilometers between the two countries? "))
+month = int(input("What month would you like to travel in? "))
+days = int(input("How many days do you want to stay? "))
+
+# Handle case where user enters a month greater than 12
+if month > 12:
+    month = month % 12
+
+cheapest_departure_day, cheapest_return_day, prices, cheapest_class = cheapest_days(distance, month, days)
+print(f"The cheapest day to depart is {cheapest_departure_day} and the cheapest day to return is {cheapest_return_day} with class {cheapest_class}")
+"""
