@@ -13,7 +13,7 @@ driver = webdriver.Chrome(executable_path=chromedriver_path) # This will open th
 sleep(2)
 
 #web scraper site
-kayak = 'https://www.kayak.com/flights/LIS-SIN/2019-07-29-flexible/2019-08-15-flexible?sort=bestflight_a'
+kayak = 'https://www.ca.kayak.com/flights/LIS-SIN/2019-07-29-flexible/2019-08-15-flexible?sort=bestflight_a'
 driver.get(kayak)
 sleep(3)
 
@@ -32,7 +32,7 @@ def start_kayak(city_from, city_to, date_start, date_end):
     """City codes - it's the IATA codes!
     Date format -  YYYY-MM-DD"""
     
-    kayak = ('https://www.kayak.com/flights/' + city_from + '-' + city_to +
+    kayak = ('https://www.ca.kayak.com/flights/' + city_from + '-' + city_to +
              '/' + date_start + '-flexible/' + date_end + '-flexible?sort=bestflight_a')
     driver.get(kayak)
     sleep(randint(8,10))
