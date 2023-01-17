@@ -36,6 +36,10 @@ public class PrimaryController {
       stage.setTitle("Text Field Example");
       stage.setScene(scene);
       stage.show();
+        
+        
+      fileToArray run = new fileToArray ();
+      run.importToArr();
    }
 
 
