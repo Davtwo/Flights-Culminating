@@ -243,3 +243,20 @@ for n in range(0,5):
     print('sleep finished.....')
 
 driver.quit()
+
+
+
+
+"""with open("flight_prices.csv", mode="w") as csv_file:
+        fieldnames = ["Departure Date", "Arrival Date", "Class","Departure Price", "Arrival Price","Total Price"]
+        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+        writer.writeheader()
+        for class_name in prices[cheapest_departure_day]:
+            writer.writerow({"Departure Date": departure_date,
+                             "Arrival Date": return_date,
+                             "Class": class_name,
+                             "Departure Price": prices[cheapest_departure_day][class_name],
+                             "Arrival Price": prices[cheapest_return_day][class_name],
+                             "Total Price": prices[cheapest_departure_day][class_name] + prices[cheapest_return_day][class_name]
+                            })
+"""
