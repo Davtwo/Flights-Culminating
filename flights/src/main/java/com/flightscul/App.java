@@ -20,7 +20,7 @@ public class App extends Application {
   *Primary screen is started allowing the user to access the data and interact with the screen
  */
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
+        scene = new Scene(loadFXML("homescreen"), 1920, 1080);
         stage.setScene(scene);
         stage.show();
     }

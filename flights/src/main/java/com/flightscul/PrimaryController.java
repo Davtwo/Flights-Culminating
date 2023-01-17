@@ -14,7 +14,7 @@ public class PrimaryController {
 
     @FXML
     private void switchToSecondary() throws IOException {
-        App.setRoot("primary");
+        App.setRoot("secondary");
     }
     /*
     *asks user for the arrival and departure location for the plane 
