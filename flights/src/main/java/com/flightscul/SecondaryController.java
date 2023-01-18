@@ -45,5 +45,42 @@ public class SecondaryController {
     void switchToSecondary(ActionEvent event) {
 
     }
+    
+    /**
+    *Takes the info gathered by data that's in the array
+    *displays each prices onto GUI
+    *https://stackoverflow.com/questions/34091561/javafx-setting-label-text-from-an-array 
+    **/
+    /**
+    public void start(Stage secondaryStage) throws Exception {
+        
+    
+    label.setText(text[0]);
+    label.setTranslateX(200);
+
+
+    Stage stage = new Stage();
+    Pane pane = new Pane();
+    Scene scene = new Scene(pane, 800, 500);
+    stage.setScene(scene);
+    stage.show();
+
+    pane.getChildren().addAll(label);
+
+    }
+/**
+*
+*
+**
+public void makeLabel() {
+
+    for(int i=0; i<text.length; i++) {
+
+        label.setText(text[i]);
+
+          }
+
+       }
+  **/
 
 }
