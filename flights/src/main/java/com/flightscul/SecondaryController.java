@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-
+//fxml secondary controller
 public class SecondaryController {
 
     @FXML
@@ -84,3 +84,7 @@ public void makeLabel() {
   **/
 
 }
+
+/**
+prices_list variable in order to get price data plugged into javafx GUI
+ */
